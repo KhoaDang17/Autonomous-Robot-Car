@@ -6,7 +6,7 @@ A mecanum robot car can move autonomously in a controlled indoor environment, ma
 
 ## Description
 
-Hardware: Keyestudio KS0560 4WD Mecanum Robot Car, RPLIDAR C1, FIT0450 (DC Motor with encoder - SJ01), 3D printing mounting parts.
+Hardware: Keyestudio KS0560 4WD Mecanum Robot Car, RPLIDAR C1, 3D printing mounting parts.
 
 ---
 Members: Khoa Dang, Mitul Ahammed
