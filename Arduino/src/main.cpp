@@ -1,21 +1,18 @@
 #include <Arduino.h>
-#include "RobotInterface.h"
+
+// put function declarations here:
+int myFunction(int, int);
 
 void setup() {
-    Serial.begin(115200);
-    initHardware(); // Initialize hardware
-    delay(2000);    // Wait for the system to stabilize
+  // put your setup code here, to run once:
+  int result = myFunction(2, 3);
 }
 
 void loop() {
-    // Step 1: Collect real-world sensor data
-    SensorData current_env = readAllSensors(); 
-    
-    // Step 2: Make autonomous decisions based on the data
-    MotorCommand action = computeAutonomousMove(current_env); 
-    
-    // Step 3: Convert the decision into motor commands (PWM)
-    executeMotorCommand(action); 
-    
-    delay(50); // Run the loop at 20Hz (50ms delay)
+  // put your main code here, to run repeatedly:
+}
+
+// put function definitions here:
+int myFunction(int x, int y) {
+  return x + y;
 }
