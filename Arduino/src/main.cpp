@@ -1,18 +1,14 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include "MotorDriver.h"
+#include "SerialComm.h"
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    initSerialComm();  // Start Hardware Serial (D0 RX / D1 TX) at 115200 bps
+    initMotorDriver(); // Initialize STC8 I2C motor controller and stop all motors
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    // Continuously listen for UART velocity commands from ESP32-C6
+    // and enforce the 500 ms safety watchdog timeout
+    processIncomingCommands();
 }

@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "Root (Docs & Repo)",
+			"path": "."
+		},
+		{
+			"name": "Arduino (Low-Level Controller)",
+			"path": "Arduino"
+		},
+		{
+			"name": "ESP32 (High-Level Brain)",
+			"path": "ESP32"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.pio": true
+		}
+	}
+}
