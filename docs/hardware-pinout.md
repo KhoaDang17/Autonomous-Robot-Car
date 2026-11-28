@@ -6,11 +6,11 @@ This document details all pin connections, UART links, STC8 I2C motor registers,
 
 ## 1. DFRobot FireBeetle 2 ESP32-C6 Pinout (Main Brain)
 
-All ESP32-C6 pin assignments are defined in [`ESP32/include/PinConfig.h`](../ESP32/include/PinConfig.h).
+All ESP32-C6 pin assignments are defined in [`include/ESP32PinConfig.h`](../include/ESP32PinConfig.h).
 
 ### 1.1 Slamtec RPLIDAR C1 Connection (`UART1` / `Serial1`, `460800` baud)
 
-| RPLIDAR C1 Signal | FireBeetle 2 ESP32-C6 Pin | Macro in `PinConfig.h` | Description |
+| RPLIDAR C1 Signal | FireBeetle 2 ESP32-C6 Pin | Macro in `ESP32PinConfig.h` | Description |
 | :--- | :--- | :--- | :--- |
 | **VCC (5V)** | `5V / VUSB` | — | Stable 5V power input for LiDAR motor & laser |
 | **LiDAR TX $\rightarrow$ ESP32 RX** | **GPIO 17** | `LIDAR_RX_PIN` | Receives $360^\circ$ scan stream (`460800` bps) |
@@ -19,7 +19,7 @@ All ESP32-C6 pin assignments are defined in [`ESP32/include/PinConfig.h`](../ESP
 
 ### 1.2 Arduino Uno UART Link (`UART0` / `Serial0`, `115200` baud)
 
-| Signal | FireBeetle 2 ESP32-C6 Pin | Macro in `PinConfig.h` | Arduino Uno Pin | Notes |
+| Signal | FireBeetle 2 ESP32-C6 Pin | Macro in `ESP32PinConfig.h` | Arduino Uno Pin | Notes |
 | :--- | :--- | :--- | :--- | :--- |
 | **ESP32 RX $\leftarrow$ Arduino TX** | **GPIO 4** | `UNO_RX_PIN` | **D1 (`TX`)** | Use a $5\text{V} \rightarrow 3.3\text{V}$ voltage divider / level shifter! |
 | **ESP32 TX $\rightarrow$ Arduino RX** | **GPIO 5** | `UNO_TX_PIN` | **D0 (`RX`)** | Sends `CMD:<vx>,<vy>,<omega>\n` and `STOP\n` |
@@ -45,11 +45,11 @@ The 3 HC-SR04 sensors are mounted along the front trapezoid bumper (`TRIG_PINS[3
 
 ## 2. Arduino Uno (Keyestudio KS0560 Shield) Pinout (Motor Slave)
 
-All Arduino Uno settings are defined in [`Arduino/include/PinConfig.h`](../Arduino/include/PinConfig.h).
+All Arduino Uno settings are defined in [`include/ArduinoPinConfig.h`](../include/ArduinoPinConfig.h).
 
 ### 2.1 UART & STC8 Motor Co-Processor Pins
 
-| Function | Arduino Uno Pin | Macro in `PinConfig.h` | Notes |
+| Function | Arduino Uno Pin | Macro in `ArduinoPinConfig.h` | Notes |
 | :--- | :--- | :--- | :--- |
 | **Hardware UART RX** | Digital Pin **D0 (`RX`)** | `UNO_BAUD` (`115200`) | Receives commands from ESP32-C6 `GPIO 5` (`UNO_TX_PIN`) |
 | **Hardware UART TX** | Digital Pin **D1 (`TX`)** | `UNO_BAUD` (`115200`) | Connects through level shifter to ESP32-C6 `GPIO 4` (`UNO_RX_PIN`) |
@@ -63,7 +63,7 @@ Each DC motor uses two registers (`reg_in1`, `reg_in2`) with PWM values `0`–`2
 - **Backward:** `reg_in1 = pwm`, `reg_in2 = 0`
 - **Stop:** `reg_in1 = 0`, `reg_in2 = 0`
 
-| Motor ID | Wheel Position | `reg_in1` | `reg_in2` | Macro in `PinConfig.h` |
+| Motor ID | Wheel Position | `reg_in1` | `reg_in2` | Macro in `ArduinoPinConfig.h` |
 | :---: | :--- | :---: | :---: | :--- |
 | `1` | **Front Right (FR)** | `0x01` | `0x02` | `MOTOR_FRONT_RIGHT` |
 | `2` | **Front Left (FL)** | `0x03` | `0x04` | `MOTOR_FRONT_LEFT` |
@@ -74,7 +74,7 @@ Each DC motor uses two registers (`reg_in1`, `reg_in2`) with PWM values `0`–`2
 
 ## 3. Mecanum Wheel Kinematics Reference (Milestone 2)
 
-In [`Arduino/src/MotorDriver.cpp`](../Arduino/src/MotorDriver.cpp), each wheel's signed speed is calculated from $(v_x, v_y, \omega)$:
+In [`lib/MotorDriver/MotorDriver.cpp`](../lib/MotorDriver/MotorDriver.cpp), each wheel's signed speed is calculated from $(v_x, v_y, \omega)$:
 
 $$\begin{aligned}
 v_{\text{FL}} &= v_x + v_y + \omega \\

@@ -63,7 +63,7 @@ flowchart LR
 
 ## 2. Software Architecture & Layer Separation (ESP32-C6)
 
-Inside [`ESP32/`](../ESP32/), the firmware is decoupled via [`ESP32/include/RobotInterface.h`](../ESP32/include/RobotInterface.h):
+Inside [`lib/`](../lib/) and [`src/ESP32_Brain/`](../src/ESP32_Brain/), the ESP32-C6 firmware is decoupled via [`lib/RobotInterface/RobotInterface.h`](../lib/RobotInterface/RobotInterface.h):
 
 ```mermaid
 flowchart TD
@@ -104,7 +104,7 @@ The **FireBeetle 2 ESP32-C6** (`UART0`, `TX = GPIO 5`, `RX = GPIO 4`) transmits 
 
 ## 4. Autonomous Collision-Avoidance Flowchart (Milestones 4 & 6)
 
-Below is the 5-stage decision cascade implemented in [`ESP32/src/NavigationLogic.cpp`](../ESP32/src/NavigationLogic.cpp):
+Below is the 5-stage decision cascade implemented in [`lib/NavigationLogic/NavigationLogic.cpp`](../lib/NavigationLogic/NavigationLogic.cpp):
 
 ```mermaid
 flowchart TD

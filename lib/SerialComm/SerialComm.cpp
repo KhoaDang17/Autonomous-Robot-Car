@@ -1,5 +1,5 @@
 #include "SerialComm.h"
-#include "PinConfig.h"
+#include "ArduinoPinConfig.h"
 #include "MotorDriver.h"
 
 // Watchdog state to track the most recent valid command from ESP32-C6

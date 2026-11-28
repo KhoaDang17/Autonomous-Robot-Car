@@ -1,5 +1,5 @@
 #include "LidarSensor.h"
-#include "PinConfig.h"
+#include "ESP32PinConfig.h"
 
 // Cached LiDAR sector clearances (updated as scan packets arrive)
 static LidarSectorSummary latest_lidar_summary = {

@@ -1,7 +1,7 @@
 #include "ArduinoLink.h"
 #include "UltrasonicSensor.h"
 #include "LidarSensor.h"
-#include "PinConfig.h"
+#include "ESP32PinConfig.h"
 
 void initArduinoLink() {
     // Hardware UART0 dedicated to Arduino Uno communication (RX=4, TX=5, 115200 bps)

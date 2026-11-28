@@ -31,18 +31,18 @@ Place a flat obstacle at known distances in front of each HC-SR04 sensor (`Left 
 | Scenario ID | Obstacle Arrangement | Expected Robot Behaviour | Observed Behaviour / Success Rate (e.g. `5/5`) | Notes / Identified Issues |
 | :---: | :--- | :--- | :--- | :--- |
 | **T1** | Flat wall straight ahead | Detect at $< 35\text{ cm}$, stop and rotate toward open space | _TBD_ | _TBD_ |
-| **T2** | Angled obstacle entering Left or Right trapezoid zone | Center clear; strafe and steer smoothly away from side obstacle | _TBD_ | Uses Mecanum `vy` + `omega` in `NavigationLogic.cpp` |
+| **T2** | Angled obstacle entering Left or Right trapezoid zone | Center clear; strafe and steer smoothly away from side obstacle | _TBD_ | Uses Mecanum `vy` + `omega` in `lib/NavigationLogic/NavigationLogic.cpp` |
 | **T3** | $90^\circ$ L-shaped corner | Detect blocked front and wall side; rotate toward open direction | _TBD_ | _TBD_ |
 | **T4** | U-shaped dead-end trap | Back up if $< 18\text{ cm}$ and rotate in place until clear exit found | _TBD_ | _TBD_ |
-| **T5** | Open room ($> 400\text{ cm}$, no echo) | Timeout returns `400.0 cm`; robot continues cruising smoothly | _TBD_ | Handled in `ESP32/src/UltrasonicSensor.cpp` |
+| **T5** | Open room ($> 400\text{ cm}$, no echo) | Timeout returns `400.0 cm`; robot continues cruising smoothly | _TBD_ | Handled in `lib/UltrasonicSensor/UltrasonicSensor.cpp` |
 
 ### 2.2 Problems Encountered & Improvements Implemented
 
 | Problem Identified | Root Cause | Solution Implemented in Code | Effect on Performance |
 | :--- | :--- | :--- | :--- |
-| Acoustic cross-talk between 3 front ultrasonic sensors | Adjacent HC-SR04 receivers picked up echoes from neighboring transmitters | Sequential polling with `5 ms` pause (`ULTRASONIC_INTER_PING_MS`) in `ESP32/src/UltrasonicSensor.cpp` | Eliminated false phantom readings between Left, Center, and Right channels |
+| Acoustic cross-talk between 3 front ultrasonic sensors | Adjacent HC-SR04 receivers picked up echoes from neighboring transmitters | Sequential polling with `5 ms` pause (`ULTRASONIC_INTER_PING_MS`) in `lib/UltrasonicSensor/UltrasonicSensor.cpp` | Eliminated false phantom readings between Left, Center, and Right channels |
 | False `0 cm` readings in wide open areas | `pulseIn()` returns `0` when no echo returns before timeout | Mapped `duration_us == 0` to `MAX_VALID_DISTANCE_CM` (`400.0 cm`) | Eliminated sudden false emergency stops |
-| Potential runaway motion if ESP32-C6 disconnects | Arduino Uno kept executing the last received PWM command | Added `500 ms` watchdog (`COMMAND_TIMEOUT_MS`) in `Arduino/src/SerialComm.cpp` | Robot automatically brakes within $0.5\text{ s}$ if UART link drops |
+| Potential runaway motion if ESP32-C6 disconnects | Arduino Uno kept executing the last received PWM command | Added `500 ms` watchdog (`COMMAND_TIMEOUT_MS`) in `lib/SerialComm/SerialComm.cpp` | Robot automatically brakes within $0.5\text{ s}$ if UART link drops |
 
 ---
 

@@ -1,5 +1,5 @@
-#ifndef PIN_CONFIG_H
-#define PIN_CONFIG_H
+#ifndef ARDUINO_PIN_CONFIG_H
+#define ARDUINO_PIN_CONFIG_H
 
 #include <Arduino.h>
 
@@ -25,4 +25,4 @@
 // Default PWM speed (0 - 255) for basic directional helper functions
 #define DEFAULT_MOTOR_SPEED 100
 
-#endif // PIN_CONFIG_H
+#endif // ARDUINO_PIN_CONFIG_H

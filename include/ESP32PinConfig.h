@@ -1,5 +1,5 @@
-#ifndef PIN_CONFIG_H
-#define PIN_CONFIG_H
+#ifndef ESP32_PIN_CONFIG_H
+#define ESP32_PIN_CONFIG_H
 
 #include <Arduino.h>
 
@@ -55,4 +55,4 @@ const int ECHO_PINS[NUM_ULTRASONIC_SENSORS] = {1, 2, 6};
 // Main control loop rate: 20 Hz (50 ms per cycle)
 #define CONTROL_LOOP_INTERVAL_MS    50
 
-#endif // PIN_CONFIG_H
+#endif // ESP32_PIN_CONFIG_H

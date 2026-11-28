@@ -2,7 +2,7 @@
 #define ULTRASONIC_SENSOR_H
 
 #include <Arduino.h>
-#include "PinConfig.h"
+#include "ESP32PinConfig.h"
 
 // Distance measurements (cm) from the 3 front trapezoid HC-SR04 sensors
 struct UltrasonicArrayData {

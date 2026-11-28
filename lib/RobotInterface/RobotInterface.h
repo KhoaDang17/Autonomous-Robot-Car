@@ -28,14 +28,16 @@ struct MotorCommand {
 };
 
 // ============================================================================
-// 2. ALGORITHM LAYER (src/NavigationLogic.cpp)
+// 2. ALGORITHM LAYER (lib/NavigationLogic/NavigationLogic.cpp)
 // ============================================================================
 
 // Compute the next movement decision from fused Ultrasonic + 2D LiDAR readings.
 MotorCommand computeAutonomousMove(const SensorData& sensor_in);
 
 // ============================================================================
-// 3. HARDWARE LAYER (src/ArduinoLink.cpp, UltrasonicSensor.cpp, LidarSensor.cpp)
+// 3. HARDWARE LAYER (lib/ArduinoLink/ArduinoLink.cpp,
+//                    lib/UltrasonicSensor/UltrasonicSensor.cpp,
+//                    lib/LidarSensor/LidarSensor.cpp)
 // ============================================================================
 
 // Initialize Ultrasonic GPIOs, RPLIDAR C1 UART1, and Arduino Uno UART0.

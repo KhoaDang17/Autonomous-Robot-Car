@@ -1,6 +1,8 @@
 #include <Arduino.h>
-#include "PinConfig.h"
+#include "ESP32PinConfig.h"
 #include "RobotInterface.h"
+#include "ArduinoLink.h"
+#include "NavigationLogic.h"
 
 void setup() {
     Serial.begin(DEBUG_SERIAL_BAUD); // USB-C Serial Monitor for debugging

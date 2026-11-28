@@ -1,6 +1,8 @@
 # PlatformIO build & dependency directories
 .pio/
 **/.pio/
+.cache/
+compile_commands.json
 
 # VS Code auto-generated C/C++ & PlatformIO files
 .vscode/.browse.c_cpp.db*

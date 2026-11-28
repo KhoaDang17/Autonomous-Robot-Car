@@ -1,5 +1,5 @@
 #include "NavigationLogic.h"
-#include "PinConfig.h"
+#include "ESP32PinConfig.h"
 #include <Arduino.h>
 
 static float minFloat(float a, float b) {

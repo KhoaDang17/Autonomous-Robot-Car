@@ -1,5 +1,5 @@
 #include "MotorDriver.h"
-#include "PinConfig.h"
+#include "ArduinoPinConfig.h"
 #include <math.h>
 
 // ============================================================================
